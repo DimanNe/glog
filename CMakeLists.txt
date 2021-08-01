@@ -75,7 +75,8 @@ if (GTest_FOUND)
 endif (GTest_FOUND)
 
 if (WITH_GFLAGS)
-  find_package (gflags 2.2.0)
+  # find_package (gflags 2.2.0)
+  set(gflags_FOUND 1)
 
   if (gflags_FOUND)
     set (HAVE_LIB_GFLAGS 1)
@@ -840,8 +841,8 @@ write_basic_package_version_file (
   ${CMAKE_CURRENT_BINARY_DIR}/glog-config-version.cmake
   COMPATIBILITY SameMajorVersion)
 
-export (TARGETS glog NAMESPACE glog:: FILE glog-targets.cmake)
-export (PACKAGE glog)
+#export (TARGETS glog NAMESPACE glog:: FILE glog-targets.cmake)
+#export (PACKAGE glog)
 
 get_filename_component (_PREFIX "${CMAKE_INSTALL_PREFIX}" ABSOLUTE)
 
@@ -873,10 +874,10 @@ file (INSTALL
   COMPONENT Development
 )
 
-install (FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/glog-config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/glog-config-version.cmake
-  DESTINATION ${_glog_CMake_INSTALLDIR})
+#install (FILES
+#  ${CMAKE_CURRENT_BINARY_DIR}/glog-config.cmake
+#  ${CMAKE_CURRENT_BINARY_DIR}/glog-config-version.cmake
+#  DESTINATION ${_glog_CMake_INSTALLDIR})
 
 # Find modules in share/glog/cmake
 install (DIRECTORY ${_glog_BINARY_CMake_DATADIR}
@@ -885,5 +886,5 @@ install (DIRECTORY ${_glog_BINARY_CMake_DATADIR}
   FILES_MATCHING PATTERN "*.cmake"
 )
 
-install (EXPORT glog-targets NAMESPACE glog:: DESTINATION
-  ${_glog_CMake_INSTALLDIR})
+#install (EXPORT glog-targets NAMESPACE glog:: DESTINATION
+#  ${_glog_CMake_INSTALLDIR})
